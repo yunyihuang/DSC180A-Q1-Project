@@ -1,0 +1,4 @@
+{
+    "dockerhub-id": "theyunyi/dsc180a-ma3",
+    "build-script": "python run.py test"
+}

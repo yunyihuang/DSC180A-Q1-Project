@@ -1,0 +1,4 @@
+﻿date,text,userid_str,status_id_str,id,name,birth,term_partisanship,term_type,term_state,country,Bucket,SentimentScore,version
+9/28/15,China is a great country,156333623,6.49E+17,3517566,James Bond,9/1/47,Democrat,rep,TX,China,2 or 3,NA,2019_batch1
+2/24/19,China is a country under dictatorship,235312723,1.10E+18,3559992,Jack Great,2/21/64,Republican,rep,TN,China,1,2,2019_batch1
+6/24/14,Canada people are friendly,20546536,4.82E+17,3468157,Benjamin Kate,11/17/34,Republican,sen,OK,Canada,2 or 3,NA,2019_batch1
