@@ -1,3 +1,4 @@
 {
-    "filepath": "test/"
+    "svc": {"C":1, "kernel":"rbf"},
+    "rf": {"n_estimators":100, "criterion":"gini", "max_depth":30}
 }

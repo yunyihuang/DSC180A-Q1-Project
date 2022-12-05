@@ -1,15 +1,39 @@
 import os
 import sys
 import json
-import pandas as pd 
-from relevance_bucket_classifier import build_model
+from src.make_dataset import *
+from src.build_features import *
+from src.relevance_bucket_classifier import *
+from src.sentiment_score_regressor import *
+
+import warnings
+
+def main(targets):
+    if 'test' in targets:
+        filepath = os.path.join('data/test', 'data.csv')
+    elif 'raw' in targets:
+        filepath = os.path.join('data/raw', 'SentimentLabeled_10112022.csv')
+
+    try:
+        print(filepath)
+        with open('config/param-A.json') as fh:
+                paramA = json.load(fh)
+        with open('config/param-B.json') as fh:
+                paramB = json.load(fh)
+
+        res_task_1 = RB_classifier(filepath, paramA['svc'], paramA['rf'])
+        res_task_2 = SS_regressor(filepath, paramB['gb'], paramB['en'])
+
+        with open('data/result/task_1_results.json', 'w') as fp:
+            json.dump(res_task_1, fp)
+        with open('data/result/task_2_results.json', 'w') as fp:
+            json.dump(res_task_2, fp)
+
+    except Exception as e:
+        print(e)
+    
 
 if __name__ == '__main__':
-    target = sys.argv[1]
-    filepath = os.path.join(target, 'data.csv')
-    df = pd.read_csv(filepath)
-
-    with open('config/config.json') as configfile:
-        params = json.load(configfile)
-
-    build_model(df, **params)
+    warnings.filterwarnings('ignore')
+    targets = sys.argv[1]
+    main(targets)

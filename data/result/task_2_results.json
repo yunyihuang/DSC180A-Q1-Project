@@ -1,0 +1,1 @@
+{"GradientBoostingRegressor": {"Mean Squared Error": 0.3125516741007264}, "LGBMRegressor": {"Mean Squared Error": 0.2996284898254683}, "ElasticNet": {"Mean Squared Error": 0.39516491789857433}}

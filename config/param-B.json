@@ -1,0 +1,4 @@
+{
+    "gb": {"learning_rate":0.1, "n_estimators":200, "random_state":1192},
+    "en": {"alpha":1, "max_iter":1000}
+}
