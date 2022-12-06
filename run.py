@@ -31,6 +31,8 @@ def main(targets):
 
     except Exception as e:
         print(e)
+
+    return [res_task_1, res_task_2]
     
 
 if __name__ == '__main__':
