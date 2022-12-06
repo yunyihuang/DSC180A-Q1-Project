@@ -27,10 +27,6 @@ def main(targets):
         res_task_1 = RB_classifier(filepath, paramA['svc'], paramA['rf'], raw=raw)
         res_task_2 = SS_regressor(filepath, paramB['gb'], paramB['en'], raw=raw)
 
-        # with open('data/result/task_1_results.json', 'w') as fp:
-        #     json.dump(res_task_1, fp)
-        # with open('data/result/task_2_results.json', 'w') as fp:
-        #     json.dump(res_task_2, fp)
         return [res_task_1, res_task_2]
 
     except Exception as e:
@@ -38,7 +34,7 @@ def main(targets):
     
 
 if __name__ == '__main__':
-    warnings.filterwarnings('ignore')
     targets = sys.argv[1]
+    warnings.filterwarnings('ignore')
     res = main(targets)
     print(res)
