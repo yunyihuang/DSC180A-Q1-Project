@@ -13,7 +13,7 @@ from sklearn.ensemble import RandomForestClassifier
 from src.make_dataset import *
 from src.build_features import *
 
-def RB_classifier(filepath, svc_params, rf_params):
+def RB_classifier(filepath, svc_params, rf_params, raw):
     """model for the first task
 
     Args:
@@ -25,7 +25,7 @@ def RB_classifier(filepath, svc_params, rf_params):
         dict: dictionary of models' performance
     """
     data = load_data(filepath)
-    X, y = get_features(data, 1)
+    X, y = get_features(data, 1, raw)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     models = [SVC(**svc_params), 
               RandomForestClassifier(**rf_params)]

@@ -11,7 +11,7 @@ from sklearn.metrics import mean_squared_error
 from src.make_dataset import *
 from src.build_features import *
 
-def SS_regressor(filepath, gb_params, en_params):
+def SS_regressor(filepath, gb_params, en_params, raw):
     """model for the second task
 
     Args:
@@ -23,7 +23,7 @@ def SS_regressor(filepath, gb_params, en_params):
         dict: dictionary of models' performance
     """
     data = load_data(filepath)
-    X, y = get_features(data, 2)
+    X, y = get_features(data, 2, raw)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
     models = [GradientBoostingRegressor(**gb_params), 
               LGBMRegressor(),

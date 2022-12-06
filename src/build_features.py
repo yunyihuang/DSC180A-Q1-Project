@@ -36,7 +36,7 @@ def process_text(text):
     return " ".join(res)
 
 
-def get_features(data, task):
+def get_features(data, task, raw):
     """Function to get X and y for the corresponding task 
 
     Args:
@@ -58,8 +58,14 @@ def get_features(data, task):
         df_bkt_A = df_bkt[df_bkt.cleaned_buckets==1]
         df_bkt_B = df_bkt[df_bkt.cleaned_buckets==0]
 
-        df_bkt_A_sample = resample(df_bkt_A, replace=False, n_samples=3000, random_state=0)
-        df_bkt_B_sample = resample(df_bkt_B, replace=False, n_samples=3000, random_state=0)
+        # only replace the sample data when not using the raw data file
+        if raw:
+            replace = False
+        else:
+            replace = True
+
+        df_bkt_A_sample = resample(df_bkt_A, replace=replace, n_samples=3000, random_state=0)
+        df_bkt_B_sample = resample(df_bkt_B, replace=replace, n_samples=3000, random_state=0)
         df_bkt_final = pd.concat([df_bkt_A_sample, df_bkt_B_sample])
         # split data
         X = df_bkt_final.cleaned_text.to_frame()
