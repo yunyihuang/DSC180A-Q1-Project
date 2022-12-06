@@ -61,11 +61,13 @@ def get_features(data, task, raw):
         # only replace the sample data when not using the raw data file
         if raw:
             replace = False
+            N = 3000
         else:
             replace = True
+            N = 10
 
-        df_bkt_A_sample = resample(df_bkt_A, replace=replace, n_samples=3000, random_state=0)
-        df_bkt_B_sample = resample(df_bkt_B, replace=replace, n_samples=3000, random_state=0)
+        df_bkt_A_sample = resample(df_bkt_A, replace=replace, n_samples=N, random_state=0)
+        df_bkt_B_sample = resample(df_bkt_B, replace=replace, n_samples=N, random_state=0)
         df_bkt_final = pd.concat([df_bkt_A_sample, df_bkt_B_sample])
         # split data
         X = df_bkt_final.cleaned_text.to_frame()
