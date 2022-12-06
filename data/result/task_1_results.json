@@ -1,1 +1,0 @@
-{"SVC": {"Accuracy": 0.8041666666666667, "Confusion Matrix": [[587, 0], [235, 378]], "Precision": 1.0, "Recall": 0.6166394779771615, "F1 score": 0.7628657921291624}, "RandomForestClassifier": {"Accuracy": 0.8041666666666667, "Confusion Matrix": [[587, 0], [235, 378]], "Precision": 1.0, "Recall": 0.6166394779771615, "F1 score": 0.7628657921291624}}
