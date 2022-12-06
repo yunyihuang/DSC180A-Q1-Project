@@ -5,11 +5,11 @@ from src.make_dataset import *
 from src.build_features import *
 from src.relevance_bucket_classifier import *
 from src.sentiment_score_regressor import *
-
 import warnings
 
 def main(targets):
     try:
+        # check if running using raw data or test data
         if 'test' in targets:
             filepath = os.path.join('data/test', 'data.csv')
             raw = False
@@ -17,11 +17,13 @@ def main(targets):
             filepath = os.path.join('data/raw', 'SentimentLabeled_10112022.csv')
             raw = True
         print(filepath)
+        # import the tuned parameters
         with open('config/param-A.json') as fh:
                 paramA = json.load(fh)
         with open('config/param-B.json') as fh:
                 paramB = json.load(fh)
 
+        # run models and get the results
         res_task_1 = RB_classifier(filepath, paramA['svc'], paramA['rf'], raw=raw)
         res_task_2 = SS_regressor(filepath, paramB['gb'], paramB['en'], raw=raw)
 

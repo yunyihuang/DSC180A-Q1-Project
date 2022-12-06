@@ -22,9 +22,12 @@ def SS_regressor(filepath, gb_params, en_params, raw):
     Returns:
         dict: dictionary of models' performance
     """
+    # get the data and process the features
     data = load_data(filepath)
     X, y = get_features(data, 2, raw)
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+    
+    # setup different models and preprocessor
     models = [GradientBoostingRegressor(**gb_params), 
               LGBMRegressor(),
               ElasticNet(**en_params)]
@@ -35,6 +38,7 @@ def SS_regressor(filepath, gb_params, en_params, raw):
             ("tfidf", TfidfVectorizer(), 'cleaned_text')]
     )
 
+    # store the results to output
     res = {}
     for model in models:
         model_name = type(model).__name__
